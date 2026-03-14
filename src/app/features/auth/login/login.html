@@ -1,0 +1,57 @@
+@if (isLoading()) {
+
+<div class="page-loader">
+
+  <div class="loader-content">
+
+    <div class="spinner"></div>
+
+    <p>Signing in...</p>
+
+  </div>
+
+</div>
+
+}
+
+<div class="login-wrapper">
+
+  <div class="login-container">
+    <div class="welcome-text">
+      <h3>Welcome to Secure Banking</h3>
+      <p>Manage your Savings & Current Accounts easily</p>
+    </div>
+    <!-- Animated Character -->
+    <lottie-player
+      src="https://assets3.lottiefiles.com/packages/lf20_puciaact.json"
+      background="transparent"
+      speed="1"
+      style="width: 320px; height: 320px;"
+      loop
+      autoplay> 
+  </lottie-player>
+
+    <!-- Login Card -->
+    <div class="login-card">
+
+      <h2>Banking Management System</h2>
+
+      <form>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" [(ngModel)]="email" placeholder="Enter your email" />
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" name="password" [(ngModel)]="password" placeholder="Enter your password" />
+        </div>
+
+        <button type="button" (click)="onLogin()">Login</button>
+      </form>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,91 @@
+<div class="transaction-container fade-in">
+
+  <!-- Transfer -->
+<div class="action-card slide-in delay">
+  <h3>Transfer Money</h3>
+
+  <div class="form-row">
+   <input
+    type="text"
+    placeholder="From Account Number"
+    [(ngModel)]="fromAccountNumber"
+    [readonly]="userRole !== 'Admin'"
+    [style.background]="userRole === 'Admin' ? 'white' : '#f1f5f9'"
+    (blur)="onFromAccountChange()"
+  />
+
+  </div>
+
+  <div class="form-row">
+    <input
+      type="text"
+      placeholder="To Account Number"
+      [(ngModel)]="toAccountNumber"
+      (blur)="validateAccount()"
+    />
+
+    <input
+      type="number"
+      placeholder="Enter Amount"
+      [(ngModel)]="amount"
+    />
+  </div>
+@if (fromAccountNumber && toAccountNumber && fromAccountNumber === toAccountNumber) {
+  <div class="error-message">
+    Sender and receiver account cannot be the same.
+  </div>
+}
+ @if (receiverName()) {
+  <div class="receiver-name">
+    Sending money to: <b>{{ receiverName() }}</b>
+  </div>
+}
+  <button 
+  class="action-btn"
+  (click)="transferMoney()"
+  [disabled]="!receiverName || !amount">
+  Transfer
+</button>
+</div>
+
+  <!-- Table -->
+  <div class="table-section slide-up">
+    <h3>Transaction History</h3>
+    <button class="download-btn" (click)="downloadHistory()">
+      Download History
+    </button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Balance After</th>
+        </tr>
+      </thead>
+      <tbody>
+      @for (t of paginatedTransactions; track $index) {
+        <tr>
+          <td>{{ t.date }}</td>
+          <td>{{ t.type }}</td>
+          <td>₹ {{ t.amount }}</td>
+          <td>₹ {{ t.balance }}</td>
+        </tr>
+      }
+      </tbody>
+    </table>
+        <div class="pagination">
+        <button (click)="prevPage()" [disabled]="currentPage() === 1">
+            Previous
+        </button>
+
+        <span>Page {{ currentPage() }} of {{ totalPages() }}</span>
+
+        <button (click)="nextPage()" [disabled]="currentPage() === totalPages()">
+            Next
+        </button>
+        </div>
+  </div>
+
+</div>

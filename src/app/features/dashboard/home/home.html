@@ -1,0 +1,40 @@
+<div class="dashboard-container">
+
+  <aside class="sidebar">
+    <div class="user-section">
+    <div class="user-name">
+      {{'Hello - ' + fullname + ' !'}}
+    </div>
+  </div>
+    <h3>Banking System</h3>
+     <!-- User Info -->
+  
+
+    <nav>
+      @if (role?.toLowerCase() === 'user') {
+        <div>
+          <a routerLink="/dashboard">Dashboard</a>
+        </div>
+      }
+      @if (role?.toLowerCase() === 'admin') {
+      <a routerLink="/dashboard/admin">
+        Create Account
+      </a>
+    }
+      <a routerLink="/dashboard/account">Accounts</a>
+      <a routerLink="/dashboard/transactions">Transactions</a>
+      <a (click)="logout()">Logout</a>
+    </nav>
+  </aside>
+
+  <div class="main-content">
+    <header class="header">
+      <h2>Banking Portal</h2>
+    </header>
+
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+  </div>
+
+</div>

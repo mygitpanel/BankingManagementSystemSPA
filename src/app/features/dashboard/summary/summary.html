@@ -1,0 +1,38 @@
+@if(summary()) {
+
+<div class="dashboard-cards">
+
+  <div class="card highlight animate-card">
+    <h4>Account Number</h4>
+    <p class="account-number">{{ summary().accountNumber }}</p>
+  </div>
+
+  <div class="card animate-card">
+    <h4>Total Balance</h4>
+    <p class="amount">₹ {{ summary().balance }}</p>
+  </div>
+
+  <div class="card animate-card">
+    <h4>Total Transactions</h4>
+    <p class="amount">{{ summary().totalTransactions }}</p>
+  </div>
+
+  <div class="card animate-card">
+    <h4>Last Transaction</h4>
+    <p>
+      ₹ {{ summary().lastTransactionAmount }}
+      <span
+  [style.color]="summary().lastTransactionType === 'Credit' ? 'green' : 'red'">
+  {{ summary().lastTransactionType }}
+</span>
+    </p>
+
+    <span class="date">
+      {{ summary().lastTransactionDate | date:'dd MMM yyyy' }}
+    </span>
+
+  </div>
+
+</div>
+
+}

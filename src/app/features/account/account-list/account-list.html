@@ -1,0 +1,159 @@
+@if (role() === 'Admin') {
+
+<div class="search-box">
+
+<input
+type="text"
+placeholder="Enter Account Number"
+[(ngModel)]="searchAccountNumber">
+
+<button (click)="searchAccount()">Search</button>
+
+</div>
+
+}
+@if (!accountDetails()) {
+
+<div class="empty-state">
+Please search an account number to view details.
+</div>
+
+}
+
+@if (accountDetails()) {
+
+<!-- Account Section -->
+
+<div class="info-section">
+
+<h2>Account Information</h2>
+
+<div class="info-grid">
+
+<div class="info-card">
+<h4>Account Number</h4>
+<p>{{accountDetails().accountNumber}}</p>
+</div>
+
+<div class="info-card">
+<h4>Account Type</h4>
+<p>{{accountDetails().accountType}}</p>
+</div>
+
+<div class="info-card">
+<h4>Balance</h4>
+<p>₹ {{accountDetails().balance}}</p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Personal Information -->
+
+<div class="info-section">
+
+<h2>Personal Information</h2>
+
+<div class="info-grid">
+
+<div class="info-card">
+<h4>Full Name</h4>
+<p>{{accountDetails().fullName}}</p>
+</div>
+
+<div class="info-card">
+<h4>Email</h4>
+<p>{{accountDetails().email}}</p>
+</div>
+
+<div class="info-card">
+<h4>Phone</h4>
+<p>{{accountDetails().phoneNumber}}</p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- KYC Details -->
+
+<div class="info-section">
+
+<h2>KYC Details</h2>
+
+<div class="info-grid">
+
+<div class="info-card">
+<h4>Aadhaar</h4>
+<p>{{accountDetails().aadhaarNumber}}</p>
+</div>
+
+<div class="info-card">
+<h4>PAN</h4>
+<p>{{accountDetails().panNumber}}</p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Address -->
+
+<div class="info-section">
+
+<h2>Address Details</h2>
+
+<div class="info-grid">
+
+<div class="info-card">
+<h4>City</h4>
+<p>{{accountDetails().city}}</p>
+</div>
+
+<div class="info-card">
+<h4>State</h4>
+<p>{{accountDetails().state}}</p>
+</div>
+
+<div class="info-card">
+<h4>Pincode</h4>
+<p>{{accountDetails().pincode}}</p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Nominee -->
+
+<div class="info-section">
+
+<h2>Nominee Details</h2>
+
+<div class="info-grid">
+
+<div class="info-card">
+<h4>Name</h4>
+<p>{{accountDetails().nomineeName}}</p>
+</div>
+
+<div class="info-card">
+<h4>Relation</h4>
+<p>{{accountDetails().nomineeRelation}}</p>
+</div>
+
+<div class="info-card">
+<h4>Phone</h4>
+<p>{{accountDetails().nomineePhone}}</p>
+</div>
+
+</div>
+
+</div>
+
+}
